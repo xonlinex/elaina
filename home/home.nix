@@ -11,6 +11,9 @@
     ./programs/vicinae.nix
     ./programs/terminal/emulators/ghostty/ghostty.nix
     ./programs/terminal/software/fzf.nix
+    ./programs/terminal/software/eza.nix
+    ./programs/terminal/software/bat.nix
+    ./programs/terminal/software/starship.nix
     ./programs/terminal/shell/fish.nix
     ./programs/noctalia.nix
     ./packages/gtk.nix

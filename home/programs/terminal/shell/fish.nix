@@ -9,6 +9,7 @@
       ll = "eza --icons -l";
       la = "eza --icons -la";
       lt = "eza --icons -T";
+      cat = "bat";
     };
 
     shellAbbrs = {
@@ -20,7 +21,7 @@
       gcl = "git clone";
       gst = "git status";
     };
-    # Funciones personalizadas de Fish
+
     functions = {
       auto_venv = {
         onVariable = "PWD";
@@ -41,11 +42,5 @@
       set -g fish_key_bindings fish_vi_key_bindings
       fish_vi_key_bindings
     '';
-  };
-
-  programs.bat.enable = true;
-  programs.eza = {
-    enable = true;
-    enableFishIntegration = true;
   };
 }

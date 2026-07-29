@@ -1,0 +1,104 @@
+{ pkgs, ... }:
+
+{
+  programs.starship = {
+    enable = true;
+    enableFishIntegration = true; # Activa automáticamente el prompt en Fish
+
+    settings = {
+      add_newline = false;
+
+      format = ''
+        $directory$git_branch$git_status$java$python$package\
+        
+        $character'';
+
+      custom.sep = {
+        command = "echo '|'";
+        when = "true";
+        format = "[$output](8)";
+      };
+
+      character = {
+        success_symbol = "[>](green)";
+        error_symbol = "[>](red)";
+        vicmd_symbol = "[V](green bold)";
+        vimcmd_replace_one_symbol = "[R](red bold)";
+        vimcmd_visual_symbol = "[V](yellow bold)";
+      };
+
+      directory = {
+        format = "[ $path](purple)";
+        truncation_length = 1;
+        # truncation_symbol = "../";
+      };
+
+      username = {
+        format = "[$user](blue)";
+        show_always = true;
+      };
+
+      hostname = {
+        ssh_only = false;
+        format = "[$hostname](blue)";
+      };
+
+      os = {
+        format = "[$symbol](blue)";
+        disabled = false;
+        symbols = {
+          Windows = "";
+          Arch = "󰣇";
+          NixOS = "󱄅";
+        };
+      };
+
+      fill = {
+        symbol = " ";
+      };
+
+      git_branch = {
+        format = " [|](8) [[ ](green)$branch](green) ";
+      };
+
+      git_status = {
+        format = "([\\[$all_status$ahead_behind\\]]($style))";
+        style = "red";
+        conflicted = "=";
+        ahead = "⇡";
+        behind = "⇣";
+        diverged = "⇕";
+        up_to_date = "";
+        untracked = "?";
+        stashed = "$";
+        modified = "!";
+        staged = "+";
+        renamed = "»";
+        deleted = "X";
+      };
+
+      cmd_duration = {
+        min_time = 60;
+        format = "[[󰪢 ](red)$duration](fg:white)";
+        disabled = false;
+      };
+
+      java = {
+        format = " [|](8) [\${symbol}(\${version})](red)";
+        symbol = "[ ](red)";
+        version_format = "v\${raw}";
+      };
+
+      package = {
+        format = " [|](8) [ $version](yellow)";
+      };
+
+      python = {
+        format = " [|](8) [\${symbol}\${pyenv_prefix}(\${version} )(\\(\$virtualenv\\) )]($style)";
+        version_format = "v\${raw}";
+        symbol = " ";
+        style = "yellow";
+      };
+    };
+  };
+}
