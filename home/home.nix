@@ -12,6 +12,7 @@
     ./programs/noctalia.nix
     ./programs/niri/default.nix
     ./programs/vicinae.nix
+    ./programs/fzf.nix
   ];
   # Configuración del Cursor para todo el entorno
   # home.pointerCursor = {
