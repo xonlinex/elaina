@@ -6,13 +6,14 @@
   home.stateVersion = "26.05";
 
   imports = [
-    ./programs/fish.nix
     ./programs/fonts.nix
-    ./programs/ghostty/ghostty.nix
-    ./programs/noctalia.nix
     ./programs/niri/default.nix
     ./programs/vicinae.nix
-    ./programs/fzf.nix
+    ./programs/terminal/emulators/ghostty/ghostty.nix
+    ./programs/terminal/software/fzf.nix
+    ./programs/terminal/shell/fish.nix
+    ./programs/noctalia.nix
+    ./packages/gtk.nix
   ];
   # Configuración del Cursor para todo el entorno
   # home.pointerCursor = {
