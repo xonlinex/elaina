@@ -7,9 +7,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Input de Noctalia apuntando a la rama cachix para binarios precompilados
+    noctalia = {
+      url = "github:noctalia-dev/noctalia/cachix";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, noctalia, ... }@inputs:
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
@@ -26,7 +30,10 @@
     # Configuración de usuario (Home Manager standalone)
     homeConfigurations.xonlinex = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
-      modules = [ ./home/home.nix ];
+      extraSpecialArgs = { inherit inputs; };
+      modules = [ 
+        ./home/home.nix
+      ];
     };
   };
 }

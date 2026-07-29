@@ -1,0 +1,15 @@
+{ pkgs, ... }:
+
+{
+  # 1. Paquetes de fuentes para tu usuario
+  home.packages = with pkgs; [
+    # nerdfonts
+    nerd-fonts.zed-mono
+
+    # normal fonts
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
+  ];
+  fonts.fontconfig.enable = true;
+}

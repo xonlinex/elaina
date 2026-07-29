@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
@@ -13,6 +9,12 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Tiempo de espera del menú (10 segundos)
+  boot.loader.timeout = 10;
+
+  # Límite de generaciones a mostrar en el menú (15 generaciones)
+  boot.loader.systemd-boot.configurationLimit = 15;
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -51,12 +53,16 @@
     variant = "";
   };
 
+  # Habilitar gestión de ratón y touchpad
+  services.libinput.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."xonlinex" = {
     isNormalUser = true;
     description = "xOnlinEx";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
+    shell = pkgs.fish;
   };
 
   # Allow unfree packages
@@ -74,7 +80,13 @@
     git
     ghostty
     firefox
+    nautilus
+    bibata-cursors
+
+    # --- Descomentar si usas KWin en SDDM ---
+    kdePackages.kwin
   ];
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -85,20 +97,31 @@
   # };
   programs.niri.enable = true;
   programs.fish.enable = true;
+  # services.xserver.enable = true;
 
 
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
   services.pipewire = {
 	  enable = true;
 	  alsa.enable = true;
 	  pulse.enable = true;
   }; 
+
   services.displayManager.sddm = {
 	  enable = true;
-	  wayland.enable = true;
+    wayland.enable = true;
+    # --- Solución para el cursor invisible en iGPU AMD ---
+    wayland.compositor = "kwin"; # <--- Comentar/Descomentar esta línea
+    settings = {
+      Theme = {
+        CursorTheme = "Bibata-Modern-Classic";
+        CursorSize = "24";
+      };
+    };
   }; 
 
   # Open ports in the firewall.
