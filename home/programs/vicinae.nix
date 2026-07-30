@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 {
   programs.vicinae = {
     enable = true;
@@ -7,16 +6,17 @@
     settings = {
       close_on_focus_loss = true;
       pop_to_root_on_close = true;
+      keybinding = "emacs";
 
-      theme = {
-        dark = {
-          name = "vicinae-dark";
-          icon_theme = "default";
+      font = {
+        normal = {
+          family = "Outfit";
+          size = 11;
         };
       };
 
       launcher_window = {
-        opacity = 0.90;
+        rounding = 0;
       };
     };
   };

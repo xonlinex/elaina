@@ -3,14 +3,13 @@
 {
   programs.starship = {
     enable = true;
-    enableFishIntegration = true; # Activa automáticamente el prompt en Fish
+    enableFishIntegration = true;
 
     settings = {
       add_newline = false;
 
       format = ''
-        $directory$git_branch$git_status$java$python$package\
-        
+        $directory$git_branch$git_status$java$python$package
         $character'';
 
       custom.sep = {
@@ -30,7 +29,6 @@
       directory = {
         format = "[ $path](purple)";
         truncation_length = 1;
-        # truncation_symbol = "../";
       };
 
       username = {

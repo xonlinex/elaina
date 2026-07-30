@@ -1,0 +1,52 @@
+{ pkgs, ... }:
+
+{
+  programs.lazygit = {
+    enable = true;
+
+    settings = {
+      gui = {
+        theme = {
+          activeBorderColor = [
+            "green"
+            "bold"
+          ];
+          inactiveBorderColor = [
+            "#5c5855"
+          ];
+          searchingActiveBorderColor = [
+            "yellow"
+            "bold"
+          ];
+          optionsTextColor = [
+            "cyan"
+          ];
+          selectedLineBgColor = [
+            "#3d3b39"
+          ];
+          inactiveViewSelectedLineBgColor = [
+            "#433f3d"
+          ];
+          cherryPickedCommitFgColor = [
+            "cyan"
+          ];
+          cherryPickedCommitBgColor = [
+            "magenta"
+          ];
+          markedBaseCommitFgColor = [
+            "cyan"
+          ];
+          markedBaseCommitBgColor = [
+            "yellow"
+          ];
+          unstagedChangesColor = [
+            "red"
+          ];
+          defaultFgColor = [
+            "default"
+          ];
+        };
+      };
+    };
+  };
+}

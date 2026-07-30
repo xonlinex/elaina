@@ -14,6 +14,9 @@
     ./programs/terminal/software/eza.nix
     ./programs/terminal/software/bat.nix
     ./programs/terminal/software/starship.nix
+    ./programs/terminal/software/atuin.nix
+    ./programs/terminal/software/zoxide.nix
+    ./programs/terminal/software/lazygit.nix
     ./programs/terminal/shell/fish.nix
     ./programs/noctalia.nix
     ./packages/gtk.nix
