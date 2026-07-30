@@ -10,8 +10,16 @@ let
   autostart = import ./autostart.nix;
   noctalia-settings = import ./noctalia-settings.nix;
 
-  # recursiveUpdate une los sets profundos y combina listas sin sobreescribir
-  myNiriConfig = lib.foldl' lib.recursiveUpdate {} [
+  # Función para fusionar attrsets que concatena las listas automáticamente
+  combineConfigs = lib.zipAttrsWith (name: values:
+    if builtins.isList (builtins.head values)
+    then lib.concatLists values
+    else if builtins.isAttrs (builtins.head values)
+    then combineConfigs values
+    else lib.last values
+  );
+
+  myNiriConfig = combineConfigs [
     monitors
     keybinds
     inputs

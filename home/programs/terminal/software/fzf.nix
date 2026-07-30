@@ -4,6 +4,8 @@
   programs.fzf = {
     enable = true;
     enableFishIntegration = true;
+    # Deshabilita el atajo Ctrl+R de fzf para evitar el conflicto con Atuin
+    historyWidget.command = "";
     
     defaultOptions = [
       "--height=40%"
