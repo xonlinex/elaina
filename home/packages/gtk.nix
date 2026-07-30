@@ -7,5 +7,6 @@
     xdg-user-dirs
     adw-gtk3
     glib
+    papirus-icon-theme
   ];
 }

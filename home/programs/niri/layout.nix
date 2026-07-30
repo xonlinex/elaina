@@ -19,7 +19,7 @@
   };
   
   layout = {
-    gaps = 20;
+    gaps = 10;
     center-focused-column = "on-overflow";
     always-center-single-column = {};
     default-column-width = {

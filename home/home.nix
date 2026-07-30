@@ -46,6 +46,9 @@
     fd
     bat
     eza
+    wl-clipboard
+    vesktop
+    yazi
   ];
 
   programs.home-manager.enable = true;

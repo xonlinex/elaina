@@ -3,6 +3,7 @@
 {
   # 1. Paquetes de fuentes para tu usuario
   home.packages = with pkgs; [
+    google-fonts
     # nerdfonts
     nerd-fonts.zed-mono
 

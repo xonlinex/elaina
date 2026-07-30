@@ -29,7 +29,7 @@
 
     # Regla 4: Estilo visual global (esquinas, blur, clip)
     {
-      geometry-corner-radius = 0;
+      geometry-corner-radius = 10;
       clip-to-geometry = true;
       tiled-state = true;
       draw-border-with-background = false;
