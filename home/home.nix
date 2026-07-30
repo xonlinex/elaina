@@ -20,6 +20,7 @@
     ./programs/terminal/shell/fish.nix
     ./programs/noctalia.nix
     ./packages/gtk.nix
+    ./programs/zen-browser.nix
   ];
   # Configuración del Cursor para todo el entorno
   # home.pointerCursor = {

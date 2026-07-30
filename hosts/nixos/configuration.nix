@@ -79,10 +79,8 @@
     fastfetch
     git
     ghostty
-    firefox
     nautilus
     bibata-cursors
-
     # --- Descomentar si usas KWin en SDDM ---
     kdePackages.kwin
   ];

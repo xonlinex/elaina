@@ -6,6 +6,7 @@
         { _props = { app-id = "zen"; }; }
         { _props = { app-id = "vesktop"; }; }
         { _props = { app-id = "spotify"; }; }
+        { _props = { app-id = "firefox"; }; }
       ];
       open-maximized = true;
     }
