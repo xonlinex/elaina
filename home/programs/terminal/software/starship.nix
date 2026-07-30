@@ -6,97 +6,117 @@
     enableFishIntegration = true;
 
     settings = {
-      add_newline = false;
+      add_newline = true;
+      scan_timeout = 5;
+      command_timeout = 500;
 
       format = ''
-        $directory$git_branch$git_status$java$python$package
+        $status$username$hostname$directory$git_branch$git_status$cmd_duration$nix_shell
         $character'';
 
-      custom.sep = {
-        command = "echo '|'";
-        when = "true";
-        format = "[$output](8)";
+      status = {
+        disabled = false;
+        format = "[$symbol](bold $style) ";
+        symbol = "│";
+        success_symbol = "[│](bold white)";
+        style = "red";
+        map_symbol = false;
+        recognize_signal_code = false;
+        pipestatus = false;
       };
 
       character = {
-        success_symbol = "[>](green)";
-        error_symbol = "[>](red)";
-        vicmd_symbol = "[V](green bold)";
-        vimcmd_replace_one_symbol = "[R](red bold)";
-        vimcmd_visual_symbol = "[V](yellow bold)";
+        format = "$symbol";
+        success_symbol = "[│](bold white) ";
+        error_symbol = "[│](bold red) ";
+        vicmd_symbol = "[│](bold green) ";
       };
 
-      directory = {
-        format = "[ $path](purple)";
-        truncation_length = 1;
-      };
+      jobs.disabled = true;
 
       username = {
-        format = "[$user](blue)";
-        show_always = true;
+        format = "[$user]($style)@";
+        style_user = "bold yellow";
+        style_root = "bold red";
+        show_always = false;
       };
 
       hostname = {
-        ssh_only = false;
-        format = "[$hostname](blue)";
+        format = "[$hostname]($style) ";
+        style = "bold yellow";
+        ssh_only = true;
       };
 
-      os = {
-        format = "[$symbol](blue)";
-        disabled = false;
-        symbols = {
-          Windows = "";
-          Arch = "󰣇";
-          NixOS = "󱄅";
-        };
-      };
-
-      fill = {
-        symbol = " ";
+      directory = {
+        format = "[$path]($style)";
+        style = "cyan";
+        truncation_length = 1;
+        truncation_symbol = "";
+        home_symbol = "~";
+        repo_root_format = "[$repo_root]($repo_root_style)";
+        repo_root_style = "bold white";
       };
 
       git_branch = {
-        format = " [|](8) [[ ](green)$branch](green) ";
+        format = " [$branch]($style)";
+        style = "green";
+        symbol = "";
       };
 
       git_status = {
-        format = "([\\[$all_status$ahead_behind\\]]($style))";
-        style = "red";
-        conflicted = "=";
-        ahead = "⇡";
-        behind = "⇣";
-        diverged = "⇕";
-        up_to_date = "";
+        format = " [$all_status$ahead_behind]($style)";
+        style = "yellow";
         untracked = "?";
-        stashed = "$";
         modified = "!";
         staged = "+";
+        deleted = "x";
         renamed = "»";
-        deleted = "X";
+        stashed = "";
+        ahead = "↑";
+        behind = "↓";
+        diverged = "↕";
       };
 
       cmd_duration = {
-        min_time = 60;
-        format = "[[󰪢 ](red)$duration](fg:white)";
-        disabled = false;
-      };
-
-      java = {
-        format = " [|](8) [\${symbol}(\${version})](red)";
-        symbol = "[ ](red)";
-        version_format = "v\${raw}";
-      };
-
-      package = {
-        format = " [|](8) [ $version](yellow)";
-      };
-
-      python = {
-        format = " [|](8) [\${symbol}\${pyenv_prefix}(\${version} )(\\(\$virtualenv\\) )]($style)";
-        version_format = "v\${raw}";
-        symbol = " ";
+        format = " [$duration]($style)";
         style = "yellow";
+        min_time = 2000;
+        show_milliseconds = true;
       };
+
+      nix_shell = {
+        disabled = false;
+        heuristic = false;
+        format = " [nix]($style)";
+        style = "bold blue";
+        impure_msg = "";
+        pure_msg = "";
+        unknown_msg = "";
+      };
+
+      # Módulos deshabilitados
+      aws.disabled = true;
+      gcloud.disabled = true;
+      nodejs.disabled = true;
+      ruby.disabled = true;
+      python.disabled = true;
+      rust.disabled = true;
+      golang.disabled = true;
+      java.disabled = true;
+      kotlin.disabled = true;
+      lua.disabled = true;
+      perl.disabled = true;
+      php.disabled = true;
+      swift.disabled = true;
+      terraform.disabled = true;
+      zig.disabled = true;
+      package.disabled = true;
+      conda.disabled = true;
+      docker_context.disabled = true;
+      kubernetes.disabled = true;
+      helm.disabled = true;
+      battery.disabled = true;
+      time.disabled = true;
     };
   };
 }
