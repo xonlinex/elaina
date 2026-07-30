@@ -5,10 +5,10 @@
     enable = true;
 
     shellAliases = {
-      ls = "eza --icons";
-      ll = "eza --icons -l";
-      la = "eza --icons -la";
-      lt = "eza --icons -T";
+      ls = "eza --icons --group-directories-first";
+      ll = "eza --icons --group-directories-first -l";
+      la = "eza --icons --group-directories-first -la";
+      tree = "eza --icons -T";
       cat = "bat";
     };
 
