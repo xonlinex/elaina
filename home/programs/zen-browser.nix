@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs,inputs, ... }:
 {
   programs.zen-browser = {
     enable = true;
@@ -6,7 +6,7 @@
       extensions.packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
         ublock-origin
         bitwarden
-        surfingkeys_ff
+        surfingkeys
         darkreader
       ];
     };
