@@ -79,7 +79,6 @@
     fastfetch
     git
     ghostty
-    nautilus
     bibata-cursors
     # --- Descomentar si usas KWin en SDDM ---
     kdePackages.kwin
@@ -95,6 +94,7 @@
   # };
   programs.niri.enable = true;
   programs.fish.enable = true;
+  programs.dconf.enable = true;
   # services.xserver.enable = true;
 
 

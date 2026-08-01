@@ -9,6 +9,9 @@
         surfingkeys
         darkreader
       ];
+      settings = {
+        "zen.view.experimental-no-window-controls" = true;
+      };
     };
   };
 }
