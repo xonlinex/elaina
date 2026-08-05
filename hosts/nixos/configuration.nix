@@ -1,10 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -65,23 +64,14 @@
     shell = pkgs.fish;
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-  
   # Enable flakes and the new nix command
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget
-    neovim
-    fastfetch
-    git
-    ghostty
-    bibata-cursors
+    # bibata-cursors
     # --- Descomentar si usas KWin en SDDM ---
-    kdePackages.kwin
   ];
 
 
@@ -101,26 +91,28 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  # services.openssh.enable = true;
 
   services.pipewire = {
 	  enable = true;
 	  alsa.enable = true;
 	  pulse.enable = true;
-  }; 
+  };
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+  };
 
   services.displayManager.sddm = {
 	  enable = true;
     wayland.enable = true;
-    # --- Solución para el cursor invisible en iGPU AMD ---
-    wayland.compositor = "kwin"; # <--- Comentar/Descomentar esta línea
-    settings = {
-      Theme = {
-        CursorTheme = "Bibata-Modern-Classic";
-        CursorSize = "24";
-      };
-    };
-  }; 
+    # settings = {
+    #   Theme = {
+    #     CursorTheme = "Bibata-Modern-Classic";
+    #     CursorSize = "24";
+    #   };
+    # };
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
