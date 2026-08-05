@@ -26,7 +26,7 @@
       };
 
       launcher_window = {
-        rounding = 10;
+        rounding = 14;
       };
     };
   };

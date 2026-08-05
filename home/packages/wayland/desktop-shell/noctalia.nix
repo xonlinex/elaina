@@ -122,23 +122,23 @@
         wallpaper_scheme = "m3-content";
         templates = {
           builtin_ids = [ "cava" "gtk3" "gtk4" ];
-          community_ids = [ "pywalfox" "discord" "papirus-icons" "vicinae" ];
+          community_ids = [ "discord" "papirus-icons" "vicinae" "zen-browser" "niri" ];
         };
       };
 
-      wallpaper = {
-        default = {
-          path = "/home/xonlinex/Pictures/Wallpapers/wallhaven-3lmj1y.jpg";
-        };
-        last = {
-          path = "/home/xonlinex/Pictures/Wallpapers/wallhaven-3lmj1y.jpg";
-        };
-        monitors = {
-          "HDMI-A-2" = {
-            path = "/home/xonlinex/Pictures/Wallpapers/wallhaven-3lmj1y.jpg";
-          };
-        };
-      };
+      # wallpaper = {
+      #   default = {
+      #     path = "/home/xonlinex/Pictures/Wallpapers/wallhaven-3lmj1y.jpg";
+      #   };
+      #   last = {
+      #     path = "/home/xonlinex/Pictures/Wallpapers/wallhaven-3lmj1y.jpg";
+      #   };
+      #   monitors = {
+      #     "HDMI-A-2" = {
+      #       path = "/home/xonlinex/Pictures/Wallpapers/wallhaven-3lmj1y.jpg";
+      #     };
+      #   };
+      # };
 
       widget = {
         clock = {
@@ -147,7 +147,7 @@
         control-center = {
           capsule = true;
           capsule_padding = 2;
-          custom_image = "/home/xonlinex/Pictures/elaine-dev-rounded.png";
+          # custom_image = "/home/xonlinex/Pictures/elaine-dev-rounded.png";
           scale = 1.6;
         };
         cpu = {

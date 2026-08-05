@@ -1,4 +1,9 @@
 {
+  include = {
+    _args = [ "noctalia.kdl" ];
+    _props = { optional = true; };
+  };
+
   binds = {
     "Mod+D" = {
       _props = { hotkey-overlay-title = "Toggle dock"; };
