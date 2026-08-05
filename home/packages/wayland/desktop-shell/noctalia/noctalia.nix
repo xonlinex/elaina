@@ -85,7 +85,7 @@
       };
 
       hooks = {
-        colors_changed = "~/elaina/extras/mode-noctalia.sh";
+        colors_changed = "~/.config/noctalia/toggle-theme.sh";
       };
 
       location = {

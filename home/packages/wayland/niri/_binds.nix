@@ -24,7 +24,10 @@
     "Mod+Shift+S".screenshot = {};
 
     "Mod+P"._props = { hotkey-overlay-title = "Color Picker"; };
-    "Mod+P".spawn-sh = "COLOR=$(niri msg pick-color | grep -oP '#[0-9A-Fa-f]{6}') && echo -n $COLOR | wl-copy -n && convert -size 64x64 xc:\"$COLOR\" /tmp/pick-color.png && notify-send 'HEX ' $COLOR -i /tmp/pick-color.png --app-name='Niri pick-color'";
+    "Mod+P".spawn-sh = ''COLOR=$(niri msg pick-color |
+        grep -oP '#[0-9a-fA-F]{6}') && [ -n "$COLOR" ] && echo -n "$COLOR" |
+      wl-copy -n && convert -size 32x32 xc:"$COLOR" /tmp/c.png &&
+      notify-send "Color copiado" "$COLOR" -i /tmp/c.png'';
 
     # Window management
     "Mod+O"._props = { repeat = false; };

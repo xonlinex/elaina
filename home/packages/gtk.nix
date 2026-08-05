@@ -23,9 +23,9 @@ in
 {
   home.packages = with pkgs; [
     gsettings-desktop-schemas
+    glib
     xdg-user-dirs
     adw-gtk3
-    papirus-icon-theme
     nautilus
     ffmpeg-headless
     ffmpegthumbnailer

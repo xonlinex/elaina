@@ -3,6 +3,16 @@
   inputs,
   ...
 }: {
+
+  home.packages = with pkgs; [
+    tree-sitter
+    curl
+    wget
+    less
+    ripgrep
+    fd
+  ];
+
   imports = [
     (inputs.import-tree ./emulators)
     (inputs.import-tree ./shell)
