@@ -1,8 +1,9 @@
-
 { pkgs, ... }:
+
 {
   home.packages = with pkgs; [
-    amberol
+    gapless
+    wl-clipboard
+    vesktop
   ];
-
 }

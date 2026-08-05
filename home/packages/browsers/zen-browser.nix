@@ -1,0 +1,27 @@
+{ pkgs, inputs, config, ... }:
+{
+  programs.zen-browser = {
+    enable = true;
+    profiles.xonlinex = {
+      extensions.packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
+        ublock-origin
+        bitwarden
+        surfingkeys
+        darkreader
+      ];
+      settings = {
+        "zen.view.experimental-no-window-controls" = true;
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        "zen.widget.linux.transparency" = false;
+      };
+    };
+  };
+
+  home.file.".zen/xonlinex/chrome/userChrome.css".text = ''
+    @import "${config.home.homeDirectory}/.cache/noctalia/zen-browser/zen-userChrome.css";
+  '';
+
+  home.file.".zen/xonlinex/chrome/userContent.css".text = ''
+    @import "${config.home.homeDirectory}/.cache/noctalia/zen-browser/zen-userContent.css";
+  '';
+}
