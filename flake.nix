@@ -22,6 +22,7 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    import-tree.url = "github:vic/import-tree";
   };
 
   outputs = { nixpkgs, home-manager, noctalia,zen-browser, firefox-addons, ... }@inputs:
@@ -44,7 +45,7 @@
       extraSpecialArgs = { inherit inputs; };
       modules = [ 
         zen-browser.homeModules.default
-        ./home/home.nix
+        ./home/default.nix
       ];
     };
   };
