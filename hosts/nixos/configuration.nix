@@ -70,6 +70,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    brightnessctl
     # bibata-cursors
     # --- Descomentar si usas KWin en SDDM ---
   ];
@@ -85,6 +86,7 @@
   programs.niri.enable = true;
   programs.fish.enable = true;
   programs.dconf.enable = true;
+
   # services.xserver.enable = true;
 
 
@@ -102,6 +104,8 @@
     enable = true;
     powerOnBoot = false;
   };
+
+  services.power-profiles-daemon.enable = true;
 
   services.displayManager.sddm = {
 	  enable = true;
