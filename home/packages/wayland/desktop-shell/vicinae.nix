@@ -27,6 +27,7 @@
 
       launcher_window = {
         rounding = 14;
+        opacity = 0.80;
       };
     };
   };

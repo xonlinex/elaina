@@ -22,11 +22,11 @@ let
 in
 {
   home.packages = with pkgs; [
+    bibata-cursors
     gsettings-desktop-schemas
     glib
     xdg-user-dirs
     adw-gtk3
-    nautilus
     ffmpeg-headless
     ffmpegthumbnailer
     totem

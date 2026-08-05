@@ -15,6 +15,7 @@
     gcc
     duff
     imagemagick
+    openssh
   ];
 
   imports = [
