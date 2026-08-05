@@ -5,20 +5,26 @@
     ./hardware-configuration.nix
   ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    # 1. Utilizar el kernel más reciente
+    kernelPackages = pkgs.linuxPackages_latest;
 
-  # Tiempo de espera del menú (10 segundos)
-  boot.loader.timeout = 10;
+    # 2. Configuración unificada del Bootloader
+    loader = {
+      efi.canTouchEfiVariables = true;
+      timeout = 10;
 
-  # Límite de generaciones a mostrar en el menú (15 generaciones)
-  boot.loader.systemd-boot.configurationLimit = 15;
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 15;
 
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+        # Renderizar la interfaz a la máxima resolución disponible en UEFI
+        consoleMode = "max";
+      };
+    };
+  };
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nixos";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -71,8 +77,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     brightnessctl
-    # bibata-cursors
-    # --- Descomentar si usas KWin en SDDM ---
   ];
 
 
