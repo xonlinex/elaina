@@ -25,10 +25,15 @@
       _props = { hotkey-overlay-title = "Browser Wallpaper"; };
       spawn-sh = "noctalia msg panel-toggle wallpaper";
     };
+    "Mod+Alt+L" = {
+      _props = { hotkey-overlay-title = "Lock session"; };
+      spawn-sh = "noctalia msg session lock";
+    };
     "Ctrl+Shift+Escape" = {
       _props = { hotkey-overlay-title = "System Monitor"; };
       spawn-sh = "noctalia msg panel-open control-center system";
     };
+
 
     # Teclas multimedia y volumen
     "F12" = {

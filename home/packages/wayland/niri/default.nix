@@ -8,7 +8,7 @@ let
   layout = import ./_layout.nix;
   rules = import ./_rules.nix;
   autostart = import ./_autostart.nix;
-  noctalia-settings = import ./_noctalia-settings.nix;
+  noctalia-settings = import ../desktop-shell/noctalia/_setttings-niri.nix;
 
   # Función para fusionar attrsets que concatena las listas automáticamente
   combineConfigs = lib.zipAttrsWith (name: values:

@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   inputs,
   ...
@@ -11,6 +12,9 @@
     less
     ripgrep
     fd
+    gcc
+    duff
+    imagemagick
   ];
 
   imports = [

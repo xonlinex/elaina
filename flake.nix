@@ -3,11 +3,11 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-# Input de Noctalia apuntando a la rama cachix para binarios precompilados
     noctalia = {
       url = "github:noctalia-dev/noctalia/cachix";
     };
@@ -22,16 +22,17 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     import-tree.url = "github:vic/import-tree";
   };
 
-  outputs = { nixpkgs, home-manager, noctalia,zen-browser, firefox-addons, ... }@inputs:
+    outputs = { nixpkgs, home-manager, noctalia,zen-browser, firefox-addons, ... }@inputs:
     let
-    system = "x86_64-linux";
-  pkgs = nixpkgs.legacyPackages.${system};
-  in
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
   {
-# Configuración del sistema (equivalente a /etc/nixos)
+  # Configuración del sistema (equivalente a /etc/nixos)
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       inherit system;
       modules = [
@@ -39,11 +40,11 @@
       ];
     };
 
-# Configuración de usuario (Home Manager standalone)
+    # Configuración de usuario (Home Manager standalone)
     homeConfigurations.xonlinex = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       extraSpecialArgs = { inherit inputs; };
-      modules = [ 
+      modules = [
         zen-browser.homeModules.default
         ./home/default.nix
       ];
