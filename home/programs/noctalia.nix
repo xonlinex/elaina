@@ -20,17 +20,28 @@
           background_opacity = 0.8;
           capsule = true;
           capsule_padding = 10.0;
-          capsule_radius = 10;
-          capsule_thickness = 0.7;
+          capsule_radius = 14;
+          capsule_thickness = 0.8;
           thickness = 40;
           padding = 10;
-          radius = 10;
-          margin_ends = 400;
+          radius = 14;
+          margin_ends = 300;
           widget_spacing = 5;
 
-          start = [ "control-center" "workspaces" "taskbar" ];
+          start = [ "launcher" "workspaces" "taskbar" ];
           center = [ "media" ];
-          end = [ "tray" "keyboard_layout" "privacy" "group:g2" "clock" "weather" "volume" "notifications" ];
+          end = [
+            "tray"
+            "keyboard_layout"
+            "privacy"
+            "group:g2"
+            "clock"
+            "weather"
+            "nix-monitor"
+            "volume"
+            "notifications"
+            "control-center"
+          ];
 
           capsule_group = [
             {
@@ -68,6 +79,7 @@
         magnification = false;
         main_axis_padding = 10;
         margin_edge = 10;
+        pinned = [ "zen-beta" "com.mitchellh.ghostty" "org.gnome.Nautilus" "dev.noctalia.Noctalia" ];
         radius = 10;
         show_dots = true;
       };
@@ -90,7 +102,12 @@
         offset_y = 15;
       };
 
+      plugins = {
+        enabled = [ ];
+      };
+
       shell = {
+        avatar_path = "/home/xonlinex/Pictures/elaine-dev.png";
         font_family = "Outfit";
         shadow = {
           direction = "center";
@@ -109,9 +126,29 @@
         };
       };
 
+      wallpaper = {
+        default = {
+          path = "/home/xonlinex/Pictures/Wallpapers/wallhaven-3lmj1y.jpg";
+        };
+        last = {
+          path = "/home/xonlinex/Pictures/Wallpapers/wallhaven-3lmj1y.jpg";
+        };
+        monitors = {
+          "HDMI-A-2" = {
+            path = "/home/xonlinex/Pictures/Wallpapers/wallhaven-3lmj1y.jpg";
+          };
+        };
+      };
+
       widget = {
         clock = {
           format = " {:%d %b, %H:%M}";
+        };
+        control-center = {
+          capsule = true;
+          capsule_padding = 2;
+          custom_image = "/home/xonlinex/Pictures/elaine-dev-rounded.png";
+          scale = 1.6;
         };
         cpu = {
           display = "text";
@@ -119,6 +156,9 @@
         };
         media = {
           title_scroll = "always";
+        };
+        nix-monitor = {
+          type = "avivbintangaringga/nix-monitor:nix-monitor";
         };
         privacy = {
           hide_inactive = true;
@@ -134,6 +174,9 @@
           inactive_opacity = 0.7;
           only_active_workspace = true;
           show_active_indicator = false;
+        };
+        workspaces = {
+          labels_only_when_occupied = true;
         };
       };
     };
