@@ -2,13 +2,18 @@
 {
   programs.zen-browser = {
     enable = true;
+
     profiles.xonlinex = {
+      id = 0;
+      isDefault = true;
+
       extensions.packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
         ublock-origin
         bitwarden
         surfingkeys
         darkreader
       ];
+
       settings = {
         "zen.view.experimental-no-window-controls" = true;
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
@@ -17,11 +22,11 @@
     };
   };
 
-  home.file.".zen/xonlinex/chrome/userChrome.css".text = ''
-    @import "${config.home.homeDirectory}/.cache/noctalia/zen-browser/zen-userChrome.css";
-  '';
-
-  home.file.".zen/xonlinex/chrome/userContent.css".text = ''
-    @import "${config.home.homeDirectory}/.cache/noctalia/zen-browser/zen-userContent.css";
-  '';
+  # home.file.".zen/xonlinex/chrome/userChrome.css".text = ''
+  #   @import "${config.home.homeDirectory}/.cache/noctalia/zen-browser/zen-userChrome.css";
+  # '';
+  #
+  # home.file.".zen/xonlinex/chrome/userContent.css".text = ''
+  #   @import "${config.home.homeDirectory}/.cache/noctalia/zen-browser/zen-userContent.css";
+  # '';
 }
