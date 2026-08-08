@@ -14,30 +14,33 @@
       };
 
       bar = {
+        order = [ "default" ];
+
         default = {
           font_family = "Outfit";
           font_weight = 400;
-          background_opacity = 0.8;
+          background_opacity = 0.85;
           capsule = true;
           capsule_padding = 10.0;
-          capsule_radius = 14;
+          capsule_radius = 20;
           capsule_thickness = 0.8;
           thickness = 40;
           padding = 10;
-          radius = 14;
-          margin_ends = 300;
+          position = "top";
+          radius = 20;
+          margin_ends = 0;
           widget_spacing = 5;
 
-          start = [ "launcher" "workspaces" "taskbar" ];
+          start = [ "launcher" "workspaces" "taskbar" "active_window" ];
           center = [ "media" ];
           end = [
             "tray"
             "keyboard_layout"
             "privacy"
-            "group:g2"
+            "sysmon"
+            "group:g1"
             "clock"
             "weather"
-            "nix-monitor"
             "volume"
             "notifications"
             "control-center"
@@ -45,13 +48,13 @@
 
           capsule_group = [
             {
-              id = "g2";
+              id = "g1";
               enabled = true;
               fill = "surface_variant";
               members = [ "cpu" "ram" "sysmon" ];
               opacity = 1.0;
               padding = 10.0;
-              radius = 10.0;
+              radius = 20.0;
             }
           ];
         };
@@ -73,14 +76,14 @@
         background_opacity = 0.7;
         cross_axis_padding = 10;
         icon_size = 40;
-        inactive_opacity = 0.8;
+        inactive_opacity = 1.0;
         inactive_scale = 1.0;
         item_spacing = 5;
-        magnification = false;
+        magnification = true;
         main_axis_padding = 10;
         margin_edge = 10;
-        pinned = [ "zen-beta" "com.mitchellh.ghostty" "org.gnome.Nautilus" "dev.noctalia.Noctalia" ];
-        radius = 10;
+        pinned = [ "zen-beta" "com.mitchellh.ghostty" "org.gnome.Nautilus" "mpv" "com.github.neithern.g4music" "org.gnome.Loupe" "org.gnome.Papers" "vesktop" "DBeaver" "Postman" "nvim.desktop"];
+        radius = 16;
         show_dots = true;
       };
 
@@ -109,56 +112,65 @@
       shell = {
         avatar_path = "/home/xonlinex/Pictures/elaine-dev.png";
         font_family = "Outfit";
+        screen_corners = {
+            enabled = true;
+            size = 40;
+        };
         shadow = {
           direction = "center";
         };
       };
 
       theme = {
-        builtin = "Noctalia";
-        community_palette = "Oxocarbon";
-        mode = "auto";
+        mode = "dark";
         source = "wallpaper";
-        wallpaper_scheme = "m3-content";
+        wallpaper_scheme = "m3-tonal-spot";
         templates = {
-          builtin_ids = [ "cava" "gtk3" "gtk4" ];
-          community_ids = [ "discord" "papirus-icons" "vicinae" "zen-browser" "niri" ];
+          builtin_ids = [ "cava" "gtk3" "gtk4" "niri"];
+          community_ids = [ "discord" "vicinae" "zen-browser" ];
         };
       };
 
-      # wallpaper = {
-      #   default = {
-      #     path = "/home/xonlinex/Pictures/Wallpapers/wallhaven-3lmj1y.jpg";
-      #   };
-      #   last = {
-      #     path = "/home/xonlinex/Pictures/Wallpapers/wallhaven-3lmj1y.jpg";
-      #   };
-      #   monitors = {
-      #     "HDMI-A-2" = {
-      #       path = "/home/xonlinex/Pictures/Wallpapers/wallhaven-3lmj1y.jpg";
-      #     };
-      #   };
-      # };
+      wallpaper = {
+        default = {
+          path = "/home/xonlinex/Pictures/Wallpapers/dyE8BgjS-wallha.com.jpg";
+        };
+        last = {
+          path = "/home/xonlinex/Pictures/Wallpapers/dyE8BgjS-wallha.com.jpg";
+        };
+        monitors = {
+          "HDMI-A-2" = {
+            path = "/home/xonlinex/Pictures/Wallpapers/dyE8BgjS-wallha.com.jpg";
+          };
+        };
+      };
 
       widget = {
+        active_window = {
+          display = "text_only";
+        };
         clock = {
           format = " {:%d %b, %H:%M}";
         };
         control-center = {
           capsule = true;
           capsule_padding = 2;
-          # custom_image = "/home/xonlinex/Pictures/elaine-dev-rounded.png";
+          custom_image = "/home/xonlinex/Pictures/elaine-dev-rounded.png";
           scale = 1.6;
         };
         cpu = {
           display = "text";
           stat = "disk_used_pct";
         };
-        media = {
-          title_scroll = "always";
+        launcher = {
+          capsule = true;
+          capsule_padding = 5;
+          custom_image = "/home/xonlinex/Pictures/nixos.png";
+          scale = 1.25;
         };
-        nix-monitor = {
-          type = "avivbintangaringga/nix-monitor:nix-monitor";
+        media = {
+          max_length = 300;
+          title_scroll = "always";
         };
         privacy = {
           hide_inactive = true;
@@ -176,7 +188,8 @@
           show_active_indicator = false;
         };
         workspaces = {
-          labels_only_when_occupied = true;
+          active_pill_size = 2.0;
+          empty_color = "outline";
         };
       };
     };

@@ -17,7 +17,7 @@
     noise = 0.03;
     saturation = 1.5;
   };
-  
+
   layout = {
     gaps = 10;
     center-focused-column = "on-overflow";
@@ -31,13 +31,13 @@
 
     border = {
       on = {};
-      width = 2;
-      # active-color = "#F7DCDE39";
-      # inactive-color = "#A58A8D30";
+      width = 1;
+      active-color = "#F7DCDE39";
+      inactive-color = "#A58A8D30";
     };
 
     shadow = {
-      off = {};
+      on = {};
       softness = 30;
       spread = 0;
       draw-behind-window = true;

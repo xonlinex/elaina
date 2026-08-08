@@ -58,6 +58,9 @@
     variant = "";
   };
 
+  # En tu módulo de NixOS:
+  services.gvfs.enable = true;
+
   # Habilitar gestión de ratón y touchpad
   services.libinput.enable = true;
 
